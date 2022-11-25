@@ -6,7 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<PersonDbContext>(opt => opt.UseInMemoryDatabase("karavanDB"));
+builder.Services.AddDbContext<OrderDbContext>(opt => opt.UseInMemoryDatabase("karavanDB"));
 builder.Services.AddTransient<IPerson, PersonRepository>();
+builder.Services.AddTransient<IOrder, OrderRepository>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -23,6 +25,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
 
 app.MapControllers();
 

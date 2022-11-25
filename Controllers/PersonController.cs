@@ -55,21 +55,19 @@ namespace KaravanAPI.Controllers
             }
             return Ok(model);
         }
-        /*
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int? id)
+        [HttpDelete("{userPhoneNumber}/{userPassword}/{sysAdminPhoneNumber}/{sysAdminPassword}")]
+        public async Task<IActionResult> Delete(string? userPhoneNumber, string? userPassword, string? sysAdminPhoneNumber, string? sysAdminPassword)
         {
-            if (id == null)
+            if (userPhoneNumber == null || userPassword == null || sysAdminPhoneNumber == null || sysAdminPassword == null)
             {
                 return BadRequest();
             }
-            POJO model = await _Person.DeleteUser(id);
+            POJO model = await _Person.DeletePerson(userPhoneNumber, userPassword, sysAdminPhoneNumber, sysAdminPassword);
             if (model == null)
             {
                 return NotFound();
             }
-            return Ok();
+            return Ok(model);
         }
-        */
     }
 }

@@ -5,7 +5,7 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#to-do-list">About The Project</a>
+      <a href="#karavanapi">About KaravanAPI</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
@@ -20,6 +20,7 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgements">Contact</a></li>
     <li><a href="#license">License</a></li>
   </ol>
 </details>
@@ -51,7 +52,7 @@ This project is aimed to develop a Back-End REST webAPI software which accepts c
 ## Getting Started
 
 **Instructions on how to access my project locally:** 
-- Open this url in your browser: [https://github.com/DebbyMiressa/Testing-Practices](https://github.com/DebbyMiressa/Testing-Practices) in your web browser.
+- Open this url in your browser: [https://github.com/DebbyMiressa/KaravanAPI](https://github.com/DebbyMiressa/KaravanAPI) in your web browser.
 - Clone it to your local machine.
 - Once the download is complete, you will be able to access the project locally . 
 
