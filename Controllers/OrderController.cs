@@ -27,7 +27,7 @@ namespace KaravanAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Save([FromBody] Order _order)
+        public async Task<IActionResult> SaveOrder([FromBody] Order _order)
         {
             if (_order == null)
             {

@@ -7,18 +7,33 @@ namespace KaravanAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OrderController : ControllerBase
+    public class BranchController : ControllerBase
     {
-        private readonly IOrder _Order;
-        public OrderController(IOrder Order)
+        private readonly IBranch _Branch;
+        public BranchController(IBranch Branch)
         {
-            _Order = Order;
+            _Branch = Branch;
         }
 
         [HttpGet]
-        public IActionResult GetOrders()
+        public IActionResult GetBranches()
         {
-            IQueryable<Order> model = _Order.GetOrders;
+            IQueryable<Branch> model = _Branch.GetBranches;
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return Ok(model);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetBranch(int? id)
+        {
+            if (id == null)
+            {
+                return BadRequest();
+            }
+            Branch model = await _Branch.GetBranch(id);
             if (model == null)
             {
                 return NotFound();
@@ -27,35 +42,20 @@ namespace KaravanAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Save([FromBody] Order _order)
+        public async Task<IActionResult> Save([FromBody] Branch _branch)
         {
-            if (_order == null)
+            if (_branch == null)
             {
                 return BadRequest();
             }
-            POJO model = await _Order.PlaceOrder(_order);
+            POJO model = await _Branch.SaveBranch(_branch);
             if (model == null)
             {
                return NotFound();
             }
             return Ok(model);
         }
-        /*
-        [HttpGet ("{id}/{password}")]
-        public async Task<IActionResult> Login(string? phoneNumber, string? password)
-        {
-            if (phoneNumber == null || password == null)
-            {
-                return BadRequest();
-            }
-            Person model = await _Person.GetPerson(phoneNumber, password);
-            if (model == null)
-            {
-                return NotFound();
-            }
-            return Ok(model);
-        }
-        
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
@@ -63,13 +63,12 @@ namespace KaravanAPI.Controllers
             {
                 return BadRequest();
             }
-            POJO model = await _Person.DeleteUser(id);
+            POJO model = await _Branch.DeleteBranch(id);
             if (model == null)
             {
                 return NotFound();
             }
-            return Ok();
+            return Ok(model);
         }
-        */
     }
 }
